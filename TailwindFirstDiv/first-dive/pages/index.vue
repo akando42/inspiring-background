@@ -2,7 +2,8 @@
   <div class="container">
     <div>
       <Label />
-      <Logo />
+      <Label />
+      <Label />
       <h1 class="title">
         first-dive
       </h1>
