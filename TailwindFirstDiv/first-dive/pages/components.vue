@@ -1,14 +1,15 @@
 <template>
-	<div>
+	<div class="bg-blue-100 h-screen py-12">
 		<Card />
 		<Note /> 
 		<Card />
 		<Note />
-		<Card />
+		<Form />
 	</div>
 </template>
 
 
 <style type="text/css">
 	
+
 </style>
