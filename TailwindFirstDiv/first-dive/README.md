@@ -19,6 +19,7 @@ $ yarn generate
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
+<<<<<<< HEAD
 
 ```
 sudo npm cache clean -f
@@ -62,3 +63,10 @@ navigator.geolocation.getCurrentPosition(function(location) {
 API Weather ENDPOINT: 
 https://api.openweathermap.org/data/2.5/find?lat=21.037446&lon=105.817205&cnt=1&appid=6ffc3493fb6ee96d233ce5825d03a26e
  
+=======
+### Project TODO
+[ ] Getting new Quote from API every 6s
+[ ] Animating the new Quote to Appear and Disappear.
+[ ] Allowing User to Fetch new Quote actively by pressing Button
+[ ] Using TailwindCSS for styling Quotation Card.
+>>>>>>> cbf19aa87887590b6af2b005264f7db8510cf2b9
