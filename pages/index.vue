@@ -1,22 +1,17 @@
 <template>
   <div class="container-fluid bg-cover h-screen w-screen grid grid-cols-3 gap-4 p-2" style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')">
-    <div class="h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
-      
+    <div class="h-12 rounded-md pl-16 pt-4 bg-white-100 text-white font-extrabold text-md">
+      <div> Dec 2, 2020 </div>
+      <div> 08:24 AM </div>
     </div>
-    <div class="h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
+    
+    <div class="h-16 rounded-md flex items-center justify-center text-white font-extrabold text-3xl pt-3">
       Motivational Views
     </div>
-    <div class="h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
-      
-    </div>
-    <div class="bg-blue-100 h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
-      1
-    </div>
-    <div class="bg-yellow-100 h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
-      2
-    </div>
-    <div class="bg-red-100 h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
-      3
+
+    <div class="h-12 rounded-md pr-16 pt-4 bg-white-100 text-white font-extrabold text-right">
+      <div class=""> 32°C </div>
+      <div class=""> Cloudy </div>
     </div>
   </div>
 </template>
