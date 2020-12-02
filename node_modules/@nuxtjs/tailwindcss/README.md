@@ -1,0 +1,85 @@
+[![@nuxtjs/tailwindcss](https://tailwindcss.nuxtjs.org/preview.png)](https://tailwindcss.nuxtjs.org)
+
+# @nuxtjs/tailwindcss
+
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
+[![Codecov][codecov-src]][codecov-href]
+[![License][license-src]][license-href]
+
+> [Tailwind CSS](https://tailwindcss.com) module for [NuxtJS](https://nuxtjs.org) with [modern css](https://tailwindcss.com/docs/using-with-preprocessors#future-css-features) ⚡️
+
+- [✨ &nbsp;Release Notes](https://tailwindcss.nuxtjs.org/releases)
+- [📖 &nbsp;Documentation](https://tailwindcss.nuxtjs.org)
+
+## Features
+
+- Zero configuration to start
+- PurgeCSS included for minimal CSS
+- Use latest CSS features (Stage 1)
+- Reference your Tailwind config in your app
+- Extendable by Nuxt modules
+
+[📖 &nbsp;Read more](https://tailwindcss.nuxtjs.org)
+
+## Quick Setup
+
+1. Add `@nuxtjs/tailwindcss` dependency to your project
+
+```bash
+# Using npm
+npm install --save-dev @nuxtjs/tailwindcss
+# Using yarn
+yarn add --dev @nuxtjs/tailwindcss
+```
+
+2. Add `@nuxtjs/tailwindcss` to the `buildModules` section of `nuxt.config.js`
+
+```js
+{
+  buildModules: [
+    '@nuxtjs/tailwindcss'
+  ]
+}
+```
+
+ℹ️ If you are using `nuxt < 2.9.0`, use `modules` property instead.
+
+That's it! You can now use Tailwind classes in your Nuxt app ✨
+
+[📖 &nbsp;Read more](https://tailwindcss.nuxtjs.org/setup)
+
+## Contributing
+
+You can contribute to this module online with CodeSandBox:
+
+[![Edit @nuxtjs/tailwindcss](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/nuxt-community/tailwindcss-module/tree/master/?fontsize=14&hidenavigation=1&theme=dark)
+
+Or locally:
+
+1. Clone this repository
+2. Install dependencies using `yarn install` or `npm install`
+3. Start development server using `yarn dev` or `npm run dev`
+
+## License
+
+[MIT License](./LICENSE)
+
+Copyright (c) Nuxt.js Team
+
+<!-- Badges -->
+[npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/tailwindcss/latest.svg
+[npm-version-href]: https://npmjs.com/package/@nuxtjs/tailwindcss
+
+[npm-downloads-src]: https://img.shields.io/npm/dt/@nuxtjs/tailwindcss.svg
+[npm-downloads-href]: https://npmjs.com/package/@nuxtjs/tailwindcss
+
+[github-actions-ci-src]: https://github.com/nuxt-community/tailwindcss-module/workflows/ci/badge.svg
+[github-actions-ci-href]: https://github.com/nuxt-community/tailwindcss-module/actions?query=workflow%3Aci
+
+[codecov-src]: https://img.shields.io/codecov/c/github/nuxt-community/tailwindcss-module.svg
+[codecov-href]: https://codecov.io/gh/nuxt-community/tailwindcss-module
+
+[license-src]: https://img.shields.io/npm/l/@nuxtjs/tailwindcss.svg
+[license-href]: https://npmjs.com/package/@nuxtjs/tailwindcss
