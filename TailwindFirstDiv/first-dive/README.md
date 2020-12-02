@@ -29,8 +29,9 @@ sudo n stable
 ## TODO
 
 #### TailwindCSS and VUEJS
-[ ] Layout Accoriding to Desing
-[ ] Form Asking for User
+[ ] Layout Accoriding to DESIGN.
+[ ] Form Asking for User Name.
+[ ] Animation Ease In and Out of Scene.
 
 #### VUE STORE 
 [ ] Store Current User Name 
