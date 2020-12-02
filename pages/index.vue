@@ -1,37 +1,22 @@
 <template>
-  <div class="container">
-    <div>
-      <Label />
-      <Label />
-      <Label />
-      <h1 class="title">
-        
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="/components"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-        <a
-          href="/components"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          Component
-        </a>
-      </div>
+  <div class="container-fluid bg-cover h-screen w-screen grid grid-cols-3 gap-4 p-2" style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')">
+    <div class="h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
+      
+    </div>
+    <div class="h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
+      Motivational Views
+    </div>
+    <div class="h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
+      
+    </div>
+    <div class="bg-blue-100 h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
+      1
+    </div>
+    <div class="bg-yellow-100 h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
+      2
+    </div>
+    <div class="bg-red-100 h-12 rounded-md flex items-center justify-center text-white font-extrabold text-2xl">
+      3
     </div>
   </div>
 </template>
