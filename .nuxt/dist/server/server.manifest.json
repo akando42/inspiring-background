@@ -1,0 +1,13 @@
+{
+  "entry": "server.js",
+  "files": {
+    "pages/components.js": "pages/components.js",
+    "pages/index.js": "pages/index.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "pages/components.js": "pages/components.js.map",
+    "pages/index.js": "pages/index.js.map",
+    "server.js": "server.js.map"
+  }
+}
