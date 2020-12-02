@@ -1,0 +1,16 @@
+[
+  {
+    "name": "components",
+    "path": "/components",
+    "component": "/Users/troydo42/Development/64Robots/pages/components.vue",
+    "chunkName": "pages/components",
+    "_name": "_e2739022"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/troydo42/Development/64Robots/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_5a18beee"
+  }
+]
