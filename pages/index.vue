@@ -15,23 +15,27 @@
     </div>
     
     <form 
-      class="col-start-3 col-span-2 h-12 flex justify-center items-center"
+      class="col-start-3 col-span-2 h-12 mt-20 flex justify-center items-center"
       v-on:submit.prevent="send"
     >
       <input 
         class="bg-transparent w-full border-b-4 border-white text-white 
-        placeholder-white text-3xl text-center font-bold
-        focus:outline-none
-        "
+          placeholder-white text-3xl text-center font-bold
+          focus:outline-none"
         v-if="name == null"
         v-model="textInput"
         placeholder="What is your name" 
       />  
       <div 
         v-if="name != null"
-        class="text-white font-bold text-4xl"
+        class="text-white font-bold text-5xl"
       > Hi, {{ name }} </div>
     </form>
+
+    <div class="h-12 col-start-3 col-span-2 justify-center nter text-white">
+      <div class="italic text-center text-xl" v-if="name !== null"> A House Divided Against Itself Can Not Stand </div>
+      <div class="italic text-right mt-2" v-if="name !== null"> Abraham Lincoln </div>
+    </div>
   </div>
 </template>
 
