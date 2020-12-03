@@ -1,5 +1,13 @@
 <template>
-  <div class="container-fluid bg-cover h-screen w-screen grid grid-cols-6 gap-4 p-2" style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')">
+  <div 
+    class="
+      container-fluid bg-cover
+      bg-gradient-to-r from-black-100 via-black-350 to-black-700
+      h-screen w-screen 
+      grid grid-cols-6 gap-4 p-2
+    " 
+    style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')"
+  >
     <div class="h-12 rounded-md pl-16 pt-4 bg-white-100 text-white font-extrabold text-md col-span-1">
       <div v-if="name !== null"> Dec 2, 2020 </div>
       <div v-if="name !== null"> 08:24 AM </div>

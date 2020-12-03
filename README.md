@@ -27,9 +27,13 @@ sudo n stable
 
 ## TODO
 #### TailwindCSS and VUEJS
-[ ] Layout Accoriding to DESIGN.
-[ ] Form Asking for User Name.
+[X] Layout Accoriding to DESIGN.
+[X] Form Asking for User Name.
 [ ] Animation Ease In and Out of Scene.
+[ ] Add Black Overlay over Image.
+[ ] Pull Time from System and Update on UI.
+[ ] Pull Weather from Location and API and Update on UI
+[ ] Pull Quote from API and Update on UI
 
 #### VUE STORE 
 [ ] Store Current User Name 
