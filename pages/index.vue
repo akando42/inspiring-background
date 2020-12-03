@@ -24,8 +24,13 @@
         focus:outline-none
         "
         v-if="name == null"
+        v-model="textInput"
         placeholder="What is your name" 
       />  
+      <div 
+        v-if="name != null"
+        class="text-white font-bold text-4xl"
+      > Hi, {{ name }} </div>
     </form>
   </div>
 </template>
@@ -34,12 +39,13 @@
 export default {
   data(){
     return {
+      textInput: '',
       name: null
     }
   }, 
   methods: {
     send: function(){
-      this.name = "Hoang Do"
+      this.name = this.textInput;
     }
   }
 
