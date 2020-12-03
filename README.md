@@ -26,7 +26,6 @@ sudo n stable
 ```
 
 ## TODO
-
 #### TailwindCSS and VUEJS
 [ ] Layout Accoriding to DESIGN.
 [ ] Form Asking for User Name.
@@ -47,7 +46,8 @@ https://source.unsplash.com/1600x900/?beachfront
 var min = new Date().getMinutes()
 var hour = new Date().getHours()
 var date = new Date().getDate();
-var month = new Date().getMonth()+ 1;
+var monthls
+ = new Date().getMonth()+ 1;
 var year = new Date().getFullYear();
 ```
 

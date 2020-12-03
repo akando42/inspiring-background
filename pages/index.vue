@@ -1,23 +1,49 @@
 <template>
-  <div class="container-fluid bg-cover h-screen w-screen grid grid-cols-3 gap-4 p-2" style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')">
-    <div class="h-12 rounded-md pl-16 pt-4 bg-white-100 text-white font-extrabold text-md">
-      <div> Dec 2, 2020 </div>
-      <div> 08:24 AM </div>
+  <div class="container-fluid bg-cover h-screen w-screen grid grid-cols-6 gap-4 p-2" style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')">
+    <div class="h-12 rounded-md pl-16 pt-4 bg-white-100 text-white font-extrabold text-md col-span-1">
+      <div v-if="name !== null"> Dec 2, 2020 </div>
+      <div v-if="name !== null"> 08:24 AM </div>
     </div>
-    
-    <div class="h-16 rounded-md flex items-center justify-center text-white font-extrabold text-3xl pt-3">
+  
+    <div class="h-16 rounded-md flex items-center justify-center text-white font-extrabold text-3xl pt-3 col-span-4">
       Motivational Views
     </div>
 
-    <div class="h-12 rounded-md pr-16 pt-4 bg-white-100 text-white font-extrabold text-right">
-      <div class=""> 32°C </div>
-      <div class=""> Cloudy </div>
+    <div class="h-12 rounded-md pr-16 pt-4 bg-white-100 text-white font-extrabold text-right col-span-1">
+      <div v-if="name !== null" class=""> 32°C </div>
+      <div v-if="name !== null" class=""> Cloudy </div>
     </div>
+    
+    <form 
+      class="col-start-3 col-span-2 h-12 flex justify-center items-center"
+      v-on:submit.prevent="send"
+    >
+      <input 
+        class="bg-transparent w-full border-b-4 border-white text-white 
+        placeholder-white text-3xl text-center font-bold
+        focus:outline-none
+        "
+        v-if="name == null"
+        placeholder="What is your name" 
+      />  
+    </form>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data(){
+    return {
+      name: null
+    }
+  }, 
+  methods: {
+    send: function(){
+      this.name = "Hoang Do"
+    }
+  }
+
+}
 </script>
 
 <style>
