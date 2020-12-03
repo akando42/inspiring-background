@@ -29,14 +29,12 @@ sudo n stable
 #### TailwindCSS and VUEJS
 [X] Layout Accoriding to DESIGN.
 [X] Form Asking for User Name.
+[ ] Form Asking Top 3 Things That Motivate You
 [ ] Animation Ease In and Out of Scene.
 [ ] Add Black Overlay over Image.
-[ ] Pull Time from System and Update on UI.
-[ ] Pull Weather from Location and API and Update on UI
-[ ] Pull Quote from API and Update on UI
 
 #### VUE STORE 
-[ ] Store Current User Name 
+[X] Store Current User Name 
 [ ] Pulling Motivation Views with Keywords: Hot Girl, Beach Front, Penthouse, Space from Unsplash
 API Endpoints...
 https://source.unsplash.com/1600x900/?girl
