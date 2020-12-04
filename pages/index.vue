@@ -1,68 +1,68 @@
 <template>
   <div 
-    class="
-      container-fluid bg-cover
-      bg-gradient-to-r from-black-100 via-black-350 to-black-700
-      h-screen w-screen 
-      grid grid-cols-6 gap-4 p-2
-    " 
+    class="container-fluid bg-cover" 
     style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')"
   >
-    <div class="h-12 rounded-md pl-16 pt-4 bg-white-100 text-white font-extrabold text-md col-span-1">
-      <transition name="fade">
-        <div v-if="name !== null" >
-          <div> {{month}} {{date}},{{year}} </div>
-          <div> {{hours}}:{{minutes}}:{{seconds}} </div>
-        </div>
-      </transition>
-    </div>
-
-    <div class="h-16 rounded-md flex items-center justify-center text-white font-extrabold text-3xl pt-3 col-span-4">
-      Motivational Views
-    </div>
-
-    <div class="h-12 rounded-md pr-16 pt-4 bg-white-100 text-white font-extrabold text-right col-span-1">
-      <transition name="fade">
-        <div v-if="name !== null" >
-          <div class=""> 32°C </div>
-          <div class=""> Cloudy </div>
-        </div>
-      </transition>
-    </div>
-    
-    <form 
-      class="col-start-3 col-span-2 h-12 mt-20 flex justify-center items-center"
-      v-on:submit.prevent="send"
+    <div class="
+      bg-black opacity-75 h-screen w-screen 
+      grid grid-cols-6 gap-4 p-2"
     >
-      <input 
-        class="bg-transparent w-full border-b-4 border-white text-white 
-          placeholder-white text-3xl text-center font-bold
-          focus:outline-none"
-        v-if="name == null"
-        v-model="textInput"
-        placeholder="What is your name" 
-      />  
-      <transition name="fade">
-        <div 
-          v-if="name !== null" 
-          class="text-white font-bold text-5xl animate-bounce"
-        > 
-          Hi, {{ name }} 
-        </div>
-      </transition>
-    </form>
+      <div class="h-12 rounded-md pl-16 pt-4 bg-white-100 text-white font-extrabold text-md col-span-1">
+        <transition name="fade">
+          <div v-if="name !== null" >
+            <div> {{month}} {{date}},{{year}} </div>
+            <div> {{hours}}:{{minutes}}:{{seconds}} </div>
+          </div>
+        </transition>
+      </div>
 
-    <div class="h-12 col-start-3 col-span-2 justify-center nter text-white">
-      <transition name="fade">
-        <div v-if="name !== null" >
-          <div class="italic text-center text-xl">
-            A House Divided Against Itself Can Not Stand 
+      <div class="h-16 rounded-md flex items-center justify-center text-white font-extrabold text-3xl pt-3 col-span-4">
+        Motivational Views
+      </div>
+
+      <div class="h-12 rounded-md pr-16 pt-4 bg-white-100 text-white font-extrabold text-right col-span-1">
+        <transition name="fade">
+          <div v-if="name !== null" >
+            <div class=""> 32°C </div>
+            <div class=""> Cloudy </div>
           </div>
-          <div class="italic text-right mt-2">
-            Abraham Lincoln
+        </transition>
+      </div>
+    
+      <form 
+        class="col-start-3 col-span-2 h-12 mt-20 flex justify-center items-center"
+        v-on:submit.prevent="send"
+      >
+        <input 
+          class="bg-transparent w-full border-b-4 border-white text-white 
+            placeholder-white text-3xl text-center font-bold
+            focus:outline-none"
+          v-if="name == null"
+          v-model="textInput"
+          placeholder="What is your name" 
+        />  
+        <transition name="fade">
+          <div 
+            v-if="name !== null" 
+            class="text-white font-bold text-5xl animate-bounce"
+          > 
+            Hi, {{ name }} 
           </div>
-        </div>
-      </transition>
+        </transition>
+      </form>
+
+      <div class="h-12 col-start-3 col-span-2 justify-center nter text-white">
+        <transition name="fade">
+          <div v-if="name !== null" >
+            <div class="italic text-center text-xl">
+              A House Divided Against Itself Can Not Stand 
+            </div>
+            <div class="italic text-right mt-2">
+              Abraham Lincoln
+            </div>
+          </div>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -110,6 +110,7 @@ export default {
   methods: {
     send: function(){
       this.name = this.textInput;
+      this.pullWeather();
     },
 
     addMotivation: function(){
@@ -133,21 +134,22 @@ export default {
     },
 
     pullWeather: function(){
+      console.log("CURRENT LOCATION", location);
       navigator.geolocation.getCurrentPosition(function(location){
         this.coordinate = {
           "lat": location.coords.latitude,
           "long": location.coords.longitude
         }
-      })
+      });
+
     }
   }
-
 }
 </script>
 
 <style>
   .fade-enter-active, .fade-leave-active {
-    transition: opacity 1s;
+    transition: opacity 1.6s;
   }
 
   .fade-enter, .fade-leave-active {

@@ -30,7 +30,7 @@ sudo n stable
 [X] Layout Accoriding to DESIGN.
 [X] Form Asking for User Name.
 [X] Animation Ease In and Out of Scene.
-[ ] Add Black Overlay over Image.
+[X] Add Black Overlay over Image.
 [ ] Form Asking Three Top Things That Motivate You
 
 #### VUE STORE 
