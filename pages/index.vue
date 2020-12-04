@@ -36,7 +36,7 @@
       />  
       <div 
         v-if="name != null"
-        class="text-white font-bold text-5xl"
+        class="text-white font-bold text-5xl animate-bounce"
       > Hi, {{ name }} </div>
     </form>
 

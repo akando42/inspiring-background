@@ -43,7 +43,7 @@ https://source.unsplash.com/1600x900/?space
 https://source.unsplash.com/1600x900/?beachfront
 
 [ ] Pulling Motivation Quotes from GET request ...  API Endpoint: https://type.fit/api/quotes
-[ ] Pulling system date and time from Javascript: 
+[X] Pulling system date and time from Javascript: 
 ``` 
 var min = new Date().getMinutes()
 var hour = new Date().getHours()
