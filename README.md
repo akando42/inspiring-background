@@ -29,9 +29,9 @@ sudo n stable
 #### TailwindCSS and VUEJS
 [X] Layout Accoriding to DESIGN.
 [X] Form Asking for User Name.
-[ ] Form Asking Top 3 Things That Motivate You
 [ ] Animation Ease In and Out of Scene.
 [ ] Add Black Overlay over Image.
+[ ] Form Asking Three Top Things That Motivate You
 
 #### VUE STORE 
 [X] Store Current User Name 
@@ -48,8 +48,7 @@ https://source.unsplash.com/1600x900/?beachfront
 var min = new Date().getMinutes()
 var hour = new Date().getHours()
 var date = new Date().getDate();
-var monthls
- = new Date().getMonth()+ 1;
+var month = new Date().getMonth()+ 1;
 var year = new Date().getFullYear();
 ```
 

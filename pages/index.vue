@@ -9,8 +9,8 @@
     style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')"
   >
     <div class="h-12 rounded-md pl-16 pt-4 bg-white-100 text-white font-extrabold text-md col-span-1">
-      <div v-if="name !== null"> Dec 2, 2020 </div>
-      <div v-if="name !== null"> 08:24 AM </div>
+      <div v-if="name !== null"> {{month}} {{date}},{{year}} </div>
+      <div v-if="name !== null"> {{hours}}:{{minutes}}:{{seconds}} </div>
     </div>
   
     <div class="h-16 rounded-md flex items-center justify-center text-white font-extrabold text-3xl pt-3 col-span-4">
@@ -41,8 +41,12 @@
     </form>
 
     <div class="h-12 col-start-3 col-span-2 justify-center nter text-white">
-      <div class="italic text-center text-xl" v-if="name !== null"> A House Divided Against Itself Can Not Stand </div>
-      <div class="italic text-right mt-2" v-if="name !== null"> Abraham Lincoln </div>
+      <div class="italic text-center text-xl" v-if="name !== null">
+        A House Divided Against Itself Can Not Stand 
+      </div>
+      <div class="italic text-right mt-2" v-if="name !== null">
+        Abraham Lincoln
+      </div>
     </div>
   </div>
 </template>
@@ -52,12 +56,73 @@ export default {
   data(){
     return {
       textInput: '',
-      name: null
+      motivationInput: '',
+      name: null, 
+      motivations: [],
+      months:[
+        'JAN',
+        'FEB',
+        'MAR',
+        'APR',
+        'MAY',
+        'JUN',
+        'JUL',
+        'AUG',
+        'SEP',
+        'OCT',
+        'NOV',
+        'DEC'
+      ],
+
+      month: 0,
+      date: '',
+      year: '',
+
+      hours: 0,
+      minutes: 0,  
+      seconds: 0,
+
+      coordinate: null, 
+      weather: null
     }
   }, 
+  
+  mounted(){
+    this.$options.timer = window.setTimeout(this.pullTime, 1000)
+  },
+
   methods: {
     send: function(){
       this.name = this.textInput;
+    },
+
+    addMotivation: function(){
+      motivations.push(this.motivationInput);
+    },
+
+    pullTime: function(){
+      const now = new Date();
+      // Getting Dates
+      this.year = now.getFullYear();
+      this.month = this.months[now.getMonth()];
+      this.date = now.getDate();
+
+      // Getting Hour - Minute - Seconds Info
+      this.hours = ('0'+now.getHours()).slice(-2);
+      this.minutes = ('0'+now.getMinutes()).slice(-2);
+      this.seconds = ('0'+now.getSeconds()).slice(-2);
+
+      // Fetching time again after 1 second
+      this.$options.timer = window.setTimeout(this.pullTime, 1000);
+    },
+
+    pullWeather: function(){
+      navigator.geolocation.getCurrentPosition(function(location){
+        this.coordinate = {
+          "lat": location.coords.latitude,
+          "long": location.coords.longitude
+        }
+      })
     }
   }
 
