@@ -98,7 +98,7 @@ export default {
       minutes: 0,  
       seconds: 0,
 
-      coordinate: null, 
+      coordinate: {}, 
       weather: null, 
       quotes: null,
       quoteIndex: 0,
@@ -143,15 +143,23 @@ export default {
     },
 
     pullWeather: async function(){
-      console.log("PULLING LOCATIONS");
-      await navigator.geolocation.getCurrentPosition(function(location){
-        console.log("CURRENT LOCATION", location.coords.latitude);
+      navigator.geolocation.getCurrentPosition(pos => {
         this.coordinate = {
-          "lat": location.coords.latitude,
-          "long": location.coords.longitude
-        }
-      });
+          'lat':pos.coords.latitude,
+          'long':pos.coords.longitude
+        };
 
+        const weatherString = `https://api.openweathermap.org/data/2.5/find?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&cnt=1&appid=6ffc3493fb6ee96d233ce5825d03a26e`;
+
+        console.log(weatherString);
+        
+        //////////////
+        /// Finish getting weather from the Weather string
+        //////////////
+        
+      }, err => {
+        console.log(err.message);
+      })
     }
   }
 }
