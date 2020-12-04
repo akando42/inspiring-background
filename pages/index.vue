@@ -55,10 +55,10 @@
         <transition name="fade">
           <div v-if="name !== null" >
             <div class="italic text-center text-xl">
-              A House Divided Against Itself Can Not Stand 
+              {{quotes[quoteIndex].text}}
             </div>
             <div class="italic text-right mt-2">
-              Abraham Lincoln
+              {{quotes[quoteIndex].author}}
             </div>
           </div>
         </transition>
@@ -99,22 +99,30 @@ export default {
       seconds: 0,
 
       coordinate: null, 
-      weather: null
+      weather: null, 
+      quotes: null,
+      quoteIndex: 0,
     }
   }, 
   
   mounted(){
     this.$options.timer = window.setTimeout(this.pullTime, 1000)
+    this.pullQuotes();
+    this.pullWeather();
   },
 
   methods: {
     send: function(){
       this.name = this.textInput;
-      this.pullWeather();
+      
     },
 
     addMotivation: function(){
       motivations.push(this.motivationInput);
+    },
+
+    pullQuotes: async function(){
+      this.quotes = await fetch('https://type.fit/api/quotes').then(res => res.json());
     },
 
     pullTime: function(){
@@ -127,15 +135,17 @@ export default {
       // Getting Hour - Minute - Seconds Info
       this.hours = ('0'+now.getHours()).slice(-2);
       this.minutes = ('0'+now.getMinutes()).slice(-2);
+      this.quoteIndex = now.getMinutes()
       this.seconds = ('0'+now.getSeconds()).slice(-2);
 
       // Fetching time again after 1 second
       this.$options.timer = window.setTimeout(this.pullTime, 1000);
     },
 
-    pullWeather: function(){
-      console.log("CURRENT LOCATION", location);
-      navigator.geolocation.getCurrentPosition(function(location){
+    pullWeather: async function(){
+      console.log("PULLING LOCATIONS");
+      await navigator.geolocation.getCurrentPosition(function(location){
+        console.log("CURRENT LOCATION", location.coords.latitude);
         this.coordinate = {
           "lat": location.coords.latitude,
           "long": location.coords.longitude
