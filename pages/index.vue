@@ -9,17 +9,25 @@
     style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')"
   >
     <div class="h-12 rounded-md pl-16 pt-4 bg-white-100 text-white font-extrabold text-md col-span-1">
-      <div v-if="name !== null"> {{month}} {{date}},{{year}} </div>
-      <div v-if="name !== null"> {{hours}}:{{minutes}}:{{seconds}} </div>
+      <transition name="fade">
+        <div v-if="name !== null" >
+          <div> {{month}} {{date}},{{year}} </div>
+          <div> {{hours}}:{{minutes}}:{{seconds}} </div>
+        </div>
+      </transition>
     </div>
-  
+
     <div class="h-16 rounded-md flex items-center justify-center text-white font-extrabold text-3xl pt-3 col-span-4">
       Motivational Views
     </div>
 
     <div class="h-12 rounded-md pr-16 pt-4 bg-white-100 text-white font-extrabold text-right col-span-1">
-      <div v-if="name !== null" class=""> 32°C </div>
-      <div v-if="name !== null" class=""> Cloudy </div>
+      <transition name="fade">
+        <div v-if="name !== null" >
+          <div class=""> 32°C </div>
+          <div class=""> Cloudy </div>
+        </div>
+      </transition>
     </div>
     
     <form 
@@ -34,19 +42,27 @@
         v-model="textInput"
         placeholder="What is your name" 
       />  
-      <div 
-        v-if="name != null"
-        class="text-white font-bold text-5xl animate-bounce"
-      > Hi, {{ name }} </div>
+      <transition name="fade">
+        <div 
+          v-if="name !== null" 
+          class="text-white font-bold text-5xl animate-bounce"
+        > 
+          Hi, {{ name }} 
+        </div>
+      </transition>
     </form>
 
     <div class="h-12 col-start-3 col-span-2 justify-center nter text-white">
-      <div class="italic text-center text-xl" v-if="name !== null">
-        A House Divided Against Itself Can Not Stand 
-      </div>
-      <div class="italic text-right mt-2" v-if="name !== null">
-        Abraham Lincoln
-      </div>
+      <transition name="fade">
+        <div v-if="name !== null" >
+          <div class="italic text-center text-xl">
+            A House Divided Against Itself Can Not Stand 
+          </div>
+          <div class="italic text-right mt-2">
+            Abraham Lincoln
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -130,6 +146,14 @@ export default {
 </script>
 
 <style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 1s;
+  }
+
+  .fade-enter, .fade-leave-active {
+    opacity: 0;
+  }
+
   .container {
     margin: 0 auto;
     min-height: 100vh;

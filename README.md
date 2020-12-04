@@ -29,7 +29,7 @@ sudo n stable
 #### TailwindCSS and VUEJS
 [X] Layout Accoriding to DESIGN.
 [X] Form Asking for User Name.
-[ ] Animation Ease In and Out of Scene.
+[X] Animation Ease In and Out of Scene.
 [ ] Add Black Overlay over Image.
 [ ] Form Asking Three Top Things That Motivate You
 
