@@ -1,7 +1,7 @@
 <template>
   <div 
     class="container-fluid bg-cover" 
-    style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')"
+    style="background-image: url('https://source.unsplash.com/1600x900/?beach%20house')"
   >
     <div class="
       bg-black opacity-75 h-screen w-screen 
@@ -107,8 +107,8 @@ export default {
   
   mounted(){
     this.$options.timer = window.setTimeout(this.pullTime, 1000)
-    this.pullQuotes();
-    this.pullWeather();
+    this.getWeather()
+    this.pullQuotes()
   },
 
   methods: {
@@ -142,24 +142,30 @@ export default {
       this.$options.timer = window.setTimeout(this.pullTime, 1000);
     },
 
-    pullWeather: async function(){
-      navigator.geolocation.getCurrentPosition(pos => {
+    getWeather: async function(coordinate){
+      await navigator.geolocation.getCurrentPosition(pos => {
         this.coordinate = {
           'lat':pos.coords.latitude,
           'long':pos.coords.longitude
         };
 
-        const weatherString = `https://api.openweathermap.org/data/2.5/find?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&cnt=1&appid=6ffc3493fb6ee96d233ce5825d03a26e`;
-
-        console.log(weatherString);
+        let weatherString = `https://api.openweathermap.org/data/2.5/find?lat=${this.coordinate.lat}&lon=${this.coordinate.long}&cnt=1&appid=6ffc3493fb6ee96d233ce5825d03a26e`;
+      
+        let weatherPromise = fetch(weatherString);
         
-        //////////////
-        /// Finish getting weather from the Weather string
-        //////////////
-        
-      }, err => {
-        console.log(err.message);
-      })
+        weatherPromise.then(response => {
+          if (response.status !== 200) {
+           console.log('Looks like there was a problem. Status Code: ' + response.status);
+           return;
+          }
+          
+          response.json().then(data => {
+            console.log(data);
+            }).catch(error => {
+            console.log(error.message);
+          })
+        });
+      }
     }
   }
 }

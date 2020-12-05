@@ -2,15 +2,15 @@
   {
     "name": "components",
     "path": "/components",
-    "component": "/Users/troydo42/Development/64Robots/pages/components.vue",
+    "component": "/Users/hoangdov/Development/64Robots/pages/components.vue",
     "chunkName": "pages/components",
-    "_name": "_e2739022"
+    "_name": "_603d22f6"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/troydo42/Development/64Robots/pages/index.vue",
+    "component": "/Users/hoangdov/Development/64Robots/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_5a18beee"
+    "_name": "_f70ca5bc"
   }
 ]
