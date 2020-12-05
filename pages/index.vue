@@ -1,7 +1,7 @@
 <template>
   <div 
     class="container-fluid bg-cover" 
-    style="background-image: url('https://source.unsplash.com/1600x900/?beach%20house')"
+    style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')"
   >
     <div class="
       bg-black opacity-75 h-screen w-screen 
@@ -23,8 +23,8 @@
       <div class="h-12 rounded-md pr-16 pt-4 bg-white-100 text-white font-extrabold text-right col-span-1">
         <transition name="fade">
           <div v-if="name !== null" >
-            <div class=""> 32°C </div>
-            <div class=""> Cloudy </div>
+            <div class=""> {{ weather.main.feels_like / 10 }} °C </div>
+            <div class=""> {{ weather.weather[0].description }} </div>
           </div>
         </transition>
       </div>
@@ -107,67 +107,55 @@ export default {
   
   mounted(){
     this.$options.timer = window.setTimeout(this.pullTime, 1000)
-    this.getWeather()
     this.pullQuotes()
+    this.getCoordinate()
   },
 
   methods: {
-    send: function(){
-      this.name = this.textInput;
-      
-    },
+    send: function(){
+      this.name = this.textInput;
+      
+    },
 
-    addMotivation: function(){
-      motivations.push(this.motivationInput);
-    },
+    addMotivation: function(){
+      motivations.push(this.motivationInput);
+    },
 
-    pullQuotes: async function(){
-      this.quotes = await fetch('https://type.fit/api/quotes').then(res => res.json());
-    },
+    pullQuotes: async function(){
+      this.quotes = await fetch('https://type.fit/api/quotes').then(res => res.json());
+    },
 
-    pullTime: function(){
-      const now = new Date();
-      // Getting Dates
-      this.year = now.getFullYear();
-      this.month = this.months[now.getMonth()];
-      this.date = now.getDate();
+    pullTime: function(){
+      const now = new Date();
+      // Getting Dates
+      this.year = now.getFullYear();
+      this.month = this.months[now.getMonth()];
+      this.date = now.getDate();
 
-      // Getting Hour - Minute - Seconds Info
-      this.hours = ('0'+now.getHours()).slice(-2);
-      this.minutes = ('0'+now.getMinutes()).slice(-2);
-      this.quoteIndex = now.getMinutes()
-      this.seconds = ('0'+now.getSeconds()).slice(-2);
+      // Getting Hour - Minute - Seconds Info
+      this.hours = ('0'+now.getHours()).slice(-2);
+      this.minutes = ('0'+now.getMinutes()).slice(-2);
+      this.quoteIndex = now.getMinutes()
+      this.seconds = ('0'+now.getSeconds()).slice(-2);
 
-      // Fetching time again after 1 second
-      this.$options.timer = window.setTimeout(this.pullTime, 1000);
-    },
+      // Fetching time again after 1 second
+      this.$options.timer = window.setTimeout(this.pullTime, 1000);
+    },
+     
+    getCoordinate: function(){
+      if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(this.pullWeather);
+      } else {
+        alert("Geo Location is Not Supported");
+      }
+    },
 
-    getWeather: async function(coordinate){
-      await navigator.geolocation.getCurrentPosition(pos => {
-        this.coordinate = {
-          'lat':pos.coords.latitude,
-          'long':pos.coords.longitude
-        };
-
-        let weatherString = `https://api.openweathermap.org/data/2.5/find?lat=${this.coordinate.lat}&lon=${this.coordinate.long}&cnt=1&appid=6ffc3493fb6ee96d233ce5825d03a26e`;
-      
-        let weatherPromise = fetch(weatherString);
-        
-        weatherPromise.then(response => {
-          if (response.status !== 200) {
-           console.log('Looks like there was a problem. Status Code: ' + response.status);
-           return;
-          }
-          
-          response.json().then(data => {
-            console.log(data);
-            }).catch(error => {
-            console.log(error.message);
-          })
-        });
-      }
-    }
-  }
+    pullWeather: async function(position){
+      let weatherString = `https://api.openweathermap.org/data/2.5/find?lat=${position.coords.latitude}&lon=${position.coords.longitude}&cnt=1&appid=6ffc3493fb6ee96d233ce5825d03a26e`;
+      let weatherData = await fetch(weatherString).then(res => res.json());
+      this.weather = weatherData.list[0];
+    }
+  }
 }
 </script>
 
