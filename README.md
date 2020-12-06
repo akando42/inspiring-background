@@ -1,4 +1,4 @@
-# first-dive
+yarn # first-dive
 
 ## Build Setup
 
@@ -31,6 +31,7 @@ sudo n stable
 [X] Form Asking for User Name.
 [X] Animation Ease In and Out of Scene.
 [X] Add Black Overlay over Image.
+
 [ ] Form Asking Three Top Things That Motivate You
 
 #### VUE STORE 
@@ -45,15 +46,23 @@ var month = new Date().getMonth()+ 1;
 var year = new Date().getFullYear();
 ```
 
-[ ] Pulling local weather using LAT & LON FROM BROWSER: 
+[X] Pulling local weather using LAT & LON FROM BROWSER: 
 ```
 
 navigator.geolocation.getCurrentPosition(function(location) {
   console.log(location.coords.latitude, location.coords.longitude);});
 ```
-
-API Weather ENDPOINT: 
+API OPEN Weather ENDPOINT: 
 https://api.openweathermap.org/data/2.5/find?lat=21.037446&lon=105.817205&cnt=1&appid=6ffc3493fb6ee96d233ce5825d03a26e
+
+```
+$ curl --request GET \
+  --url 'https://api.climacell.co/v3/weather/realtime?lat=21.037446&lon=105.817205&unit_system=si&fields=temp&apikey=EKsI2JvRPj8S1MNDCjleFOQHyZnoLt1m'
+```
+
+
+EKsI2JvRPj8S1MNDCjleFOQHyZnoLt1m
+
 
 [ ] Pulling Motivation Views with Keywords: Hot Girl, Beach Front, Penthouse, Space from Unsplash
 API Endpoints...
@@ -61,4 +70,3 @@ https://source.unsplash.com/1600x900/?girl
 https://source.unsplash.com/1600x900/?penthouse
 https://source.unsplash.com/1600x900/?space
 https://source.unsplash.com/1600x900/?beachfront
-

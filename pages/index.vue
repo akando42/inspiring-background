@@ -1,7 +1,7 @@
 <template>
   <div 
     class="container-fluid bg-cover" 
-    style="background-image: url('https://source.unsplash.com/1600x900/?hot%20girl')"
+    style="background-image: url('https://source.unsplash.com/1600x900/?pent%20house')"
   >
     <div class="
       bg-black opacity-75 h-screen w-screen 
@@ -23,8 +23,8 @@
       <div class="h-12 rounded-md pr-16 pt-4 bg-white-100 text-white font-extrabold text-right col-span-1">
         <transition name="fade">
           <div v-if="name !== null" >
-            <div class=""> {{ weather.main.feels_like / 10 }} °C </div>
-            <div class=""> {{ weather.weather[0].description }} </div>
+            <div class=""> {{ weather.temp.value}} °C </div>
+            <div class=""> {{ weather.weather_code.value }} </div>
           </div>
         </transition>
       </div>
@@ -151,9 +151,12 @@ export default {
     },
 
     pullWeather: async function(position){
-      let weatherString = `https://api.openweathermap.org/data/2.5/find?lat=${position.coords.latitude}&lon=${position.coords.longitude}&cnt=1&appid=6ffc3493fb6ee96d233ce5825d03a26e`;
+      let weatherString = `https://api.climacell.co/v3/weather/realtime?lat=${position.coords.latitude}&lon=${position.coords.longitude}&unit_system=si&fields=weather_code%2Ctemp&apikey=EKsI2JvRPj8S1MNDCjleFOQHyZnoLt1m`;
+      
       let weatherData = await fetch(weatherString).then(res => res.json());
-      this.weather = weatherData.list[0];
+      console.log(weatherData);
+      
+      this.weather = weatherData;
     }
   }
 }
