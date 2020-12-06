@@ -41,12 +41,21 @@
           v-model="textInput"
           placeholder="What is your name" 
         />  
+
         <transition name="fade">
-          <div 
-            v-if="name !== null" 
-            class="text-white font-bold text-5xl animate-bounce"
-          > 
-            Hi, {{ name }} 
+          <div v-if="name !== null">
+            <div class="text-white text-center font-bold text-5xl animate-bounce">
+              Hi, {{ name }} 
+            </div>
+            
+            <input 
+              class="bg-transparent w-full border-b-4 border-white text-white mt-3
+              placeholder-white text-3xl text-center font-bold focus:outline-none"
+              v-if="name !== null"
+              v-model="motivationInput"
+              v-on:keyup.enter="addMotive"
+              :placeholder="placeHolder" 
+            />  
           </div>
         </transition>
       </form>
@@ -71,10 +80,6 @@
 export default {
   data(){
     return {
-      textInput: '',
-      motivationInput: '',
-      name: null, 
-      motivations: [],
       months:[
         'JAN',
         'FEB',
@@ -90,6 +95,14 @@ export default {
         'DEC'
       ],
 
+      textInput: '',
+      motivationInput: '',
+
+      name: null, 
+      motivationInput: '',
+      placeHolder: 'Enter Your Motives',
+      motives: [],
+
       month: 0,
       date: '',
       year: '',
@@ -99,9 +112,9 @@ export default {
       seconds: 0,
 
       coordinate: {}, 
-      weather: null, 
+      weather: {},
       quotes: null,
-      quoteIndex: 0,
+      quoteIndex: 0
     }
   }, 
   
@@ -117,9 +130,12 @@ export default {
       
     },
 
-    addMotivation: function(){
-      motivations.push(this.motivationInput);
+    addMotive: function(){
+      this.motives.push(this.motivationInput);
+      this.motivationInput = "";
+      this.placeHolder = "";
     },
+
 
     pullQuotes: async function(){
       this.quotes = await fetch('https://type.fit/api/quotes').then(res => res.json());
@@ -153,10 +169,7 @@ export default {
     pullWeather: async function(position){
       let weatherString = `https://api.climacell.co/v3/weather/realtime?lat=${position.coords.latitude}&lon=${position.coords.longitude}&unit_system=si&fields=weather_code%2Ctemp&apikey=EKsI2JvRPj8S1MNDCjleFOQHyZnoLt1m`;
       
-      let weatherData = await fetch(weatherString).then(res => res.json());
-      console.log(weatherData);
-      
-      this.weather = weatherData;
+      this.weather = await fetch(weatherString).then(res => res.json());
     }
   }
 }
