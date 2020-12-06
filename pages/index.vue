@@ -1,7 +1,7 @@
 <template>
   <div 
     class="container-fluid bg-cover" 
-    style="background-image: url('https://source.unsplash.com/1600x900/?pent%20house')"
+    :style="{backgroundImage: `url(${backgroundURL})`}"
   >
     <div class="
       bg-black opacity-75 h-screen w-screen 
@@ -16,15 +16,23 @@
         </transition>
       </div>
 
-      <div class="h-16 rounded-md flex items-center justify-center text-white font-extrabold text-3xl pt-3 col-span-4">
-        Motivational Views
+      <div class="h-16 rounded-md items-center text-center text-white pt-3 col-span-4">
+        <div class="font-extrabold text-3xl">
+          Motivational Views
+        </div>
+
+        <div class="mt-3">
+          <span v-for="motive in motives" class="border-2 rounded p-1 m-1 border-white">
+            {{ motive }} 
+          </span>
+        </div>
       </div>
 
       <div class="h-12 rounded-md pr-16 pt-4 bg-white-100 text-white font-extrabold text-right col-span-1">
         <transition name="fade">
-          <div v-if="name !== null" >
-            <div class=""> {{ weather.temp.value}} °C </div>
-            <div class=""> {{ weather.weather_code.value }} </div>
+          <div v-if="weather"> 
+            <div class=""> {{ weather.temp.value | 0 }} °C </div>
+            <div class="capitalize"> {{ weather.weather_code.value | Normal }}</div>
           </div>
         </transition>
       </div>
@@ -49,18 +57,18 @@
             </div>
             
             <input 
-              class="bg-transparent w-full border-b-4 border-white text-white mt-3
-              placeholder-white text-3xl text-center font-bold focus:outline-none"
+              class="bg-transparent text-2xl border-b-4 border-white text-white mt-auto pt-4 focus:text-center
+              placeholder-gray  -4 pr-4 text-center font-italic focus:outline-none"
               v-if="name !== null"
               v-model="motivationInput"
               v-on:keyup.enter="addMotive"
-              :placeholder="placeHolder" 
+              placeholder="What Motivate You ?" 
             />  
           </div>
         </transition>
       </form>
 
-      <div class="h-12 col-start-3 col-span-2 justify-center nter text-white">
+      <div class="h-12 col-start-3 col-span-2 justify-center text-white">
         <transition name="fade">
           <div v-if="name !== null" >
             <div class="italic text-center text-xl">
@@ -102,7 +110,8 @@ export default {
       motivationInput: '',
       placeHolder: 'Enter Your Motives',
       motives: [],
-
+      motiveURLs: [],
+      backgroundURL: "",
       month: 0,
       date: '',
       year: '',
@@ -112,7 +121,7 @@ export default {
       seconds: 0,
 
       coordinate: {}, 
-      weather: {},
+      weather: null,
       quotes: null,
       quoteIndex: 0
     }
@@ -127,14 +136,23 @@ export default {
   methods: {
     send: function(){
       this.name = this.textInput;
-      
     },
 
     addMotive: function(){
       this.motives.push(this.motivationInput);
+      this.motiveURLs.push(encodeURI(this.motivationInput));
       this.motivationInput = "";
-      this.placeHolder = "";
+
+      // Randomize Background Image
+      var randomIndex = Math.floor(Math.random()*this.motiveURLs.length);
+      this.backgroundURL = "https://source.unsplash.com/1600x900/?".concat(this.motiveURLs[randomIndex]);
     },
+
+    changeBackground: function(){
+      // Randomize Backgroud Image
+      var randomIndex = Math.floor(Math.random()*this.motiveURLs.length);
+      this.backgroundURL = "https://source.unsplash.com/1600x900/?".concat(this.motiveURLs[randomIndex]);
+    },
 
 
     pullQuotes: async function(){
@@ -143,6 +161,7 @@ export default {
 
     pullTime: function(){
       const now = new Date();
+
       // Getting Dates
       this.year = now.getFullYear();
       this.month = this.months[now.getMonth()];
@@ -151,9 +170,9 @@ export default {
       // Getting Hour - Minute - Seconds Info
       this.hours = ('0'+now.getHours()).slice(-2);
       this.minutes = ('0'+now.getMinutes()).slice(-2);
-      this.quoteIndex = now.getMinutes()
-      this.seconds = ('0'+now.getSeconds()).slice(-2);
+      this.quoteIndex = now.getMinutes();
 
+      this.seconds = ('0'+now.getSeconds()).slice(-2);
       // Fetching time again after 1 second
       this.$options.timer = window.setTimeout(this.pullTime, 1000);
     },

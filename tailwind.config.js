@@ -11,7 +11,9 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      textAlign: ['hover', 'focus'],
+    },
   },
   plugins: [],
 }

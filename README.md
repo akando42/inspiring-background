@@ -31,8 +31,7 @@ sudo n stable
 [X] Form Asking for User Name.
 [X] Animation Ease In and Out of Scene.
 [X] Add Black Overlay over Image.
-
-[ ] Form Asking Three Top Things That Motivate You
+[X] Form Asking Three Top Things That Motivate You
 
 #### VUE STORE 
 [X] Store Current User Name 
